@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <center>
+      <h1>Hello</h1>
+      <h2>My name is Yusuf Mariam</h2>
+      <h2>This is my Third semester Altschool</h2>
+      <h1 :class="counter">Counter: {{ counter }}</h1>
+      <button :class="increment" @click="increment">Increment</button>
+      <button :class="decrement" @click="decrement">Decrement</button>
+      <button :class="reset" @click="reset">Reset</button>
+    </center>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  computed: {
+    counter() {
+      return this.$store.getters.counter;
+    },
+  },
+  methods: {
+    increment() {
+      this.$store.dispatch("increment");
+    },
+    decrement() {
+      this.$store.dispatch("decrement");
+    },
+    reset() {
+      this.$store.dispatch("reset");
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  margin: 0;
+  background: #5592dc;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  place-items: center;
+}
+.increment {
+  padding-left: 5px;
 }
 </style>
